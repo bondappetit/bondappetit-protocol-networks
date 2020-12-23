@@ -3,9 +3,24 @@
         {
             "inputs": [
                 {
-                    "internalType": "uint256",
-                    "name": "initialSupply",
-                    "type": "uint256"
+                    "internalType": "address",
+                    "name": "_incoming",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_outcoming",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_recipient",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_uniswapRouter",
+                    "type": "address"
                 }
             ],
             "stateMutability": "nonpayable",
@@ -15,25 +30,32 @@
             "anonymous": false,
             "inputs": [
                 {
-                    "indexed": true,
-                    "internalType": "address",
-                    "name": "owner",
-                    "type": "address"
-                },
-                {
-                    "indexed": true,
-                    "internalType": "address",
-                    "name": "spender",
-                    "type": "address"
+                    "indexed": false,
+                    "internalType": "uint256",
+                    "name": "incoming",
+                    "type": "uint256"
                 },
                 {
                     "indexed": false,
                     "internalType": "uint256",
-                    "name": "value",
+                    "name": "outcoming",
                     "type": "uint256"
                 }
             ],
-            "name": "Approval",
+            "name": "BuybackSuccessed",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "newIncoming",
+                    "type": "address"
+                }
+            ],
+            "name": "IncomingChanged",
             "type": "event"
         },
         {
@@ -59,21 +81,54 @@
             "anonymous": false,
             "inputs": [
                 {
-                    "indexed": true,
+                    "indexed": false,
                     "internalType": "address",
-                    "name": "from",
+                    "name": "account",
                     "type": "address"
-                },
+                }
+            ],
+            "name": "Paused",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
                 {
-                    "indexed": true,
+                    "indexed": false,
                     "internalType": "address",
-                    "name": "to",
+                    "name": "newPauser",
+                    "type": "address"
+                }
+            ],
+            "name": "PauserChanged",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "newRecipient",
+                    "type": "address"
+                }
+            ],
+            "name": "RecipientChanged",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
+                {
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "recipient",
                     "type": "address"
                 },
                 {
                     "indexed": false,
                     "internalType": "uint256",
-                    "name": "value",
+                    "name": "amount",
                     "type": "uint256"
                 }
             ],
@@ -81,50 +136,41 @@
             "type": "event"
         },
         {
+            "anonymous": false,
             "inputs": [
                 {
+                    "indexed": false,
                     "internalType": "address",
-                    "name": "owner",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "spender",
+                    "name": "newUniswapRouter",
                     "type": "address"
                 }
             ],
-            "name": "allowance",
-            "outputs": [
+            "name": "UniswapRouterChanged",
+            "type": "event"
+        },
+        {
+            "anonymous": false,
+            "inputs": [
                 {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
+                    "indexed": false,
+                    "internalType": "address",
+                    "name": "account",
+                    "type": "address"
                 }
             ],
-            "stateMutability": "view",
-            "type": "function"
+            "name": "Unpaused",
+            "type": "event"
         },
         {
             "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "spender",
-                    "type": "address"
-                },
                 {
                     "internalType": "uint256",
                     "name": "amount",
                     "type": "uint256"
                 }
             ],
-            "name": "approve",
-            "outputs": [
-                {
-                    "internalType": "bool",
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
+            "name": "buy",
+            "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
         },
@@ -132,126 +178,80 @@
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "account",
+                    "name": "_incoming",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_recipient",
                     "type": "address"
                 }
             ],
-            "name": "balanceOf",
-            "outputs": [
-                {
-                    "internalType": "uint256",
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "stateMutability": "view",
+            "name": "changeIncoming",
+            "outputs": [],
+            "stateMutability": "nonpayable",
             "type": "function"
         },
         {
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "account",
+                    "name": "newPauser",
                     "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "amount",
-                    "type": "uint256"
                 }
             ],
-            "name": "burn",
+            "name": "changePauser",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_recipient",
+                    "type": "address"
+                }
+            ],
+            "name": "changeRecipient",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_uniswapRouter",
+                    "type": "address"
+                }
+            ],
+            "name": "changeUniswapRouter",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
         },
         {
             "inputs": [],
-            "name": "decimals",
+            "name": "incoming",
             "outputs": [
                 {
-                    "internalType": "uint8",
+                    "internalType": "contract ERC20",
                     "name": "",
-                    "type": "uint8"
+                    "type": "address"
                 }
             ],
             "stateMutability": "view",
             "type": "function"
         },
         {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "spender",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "subtractedValue",
-                    "type": "uint256"
-                }
-            ],
-            "name": "decreaseAllowance",
-            "outputs": [
-                {
-                    "internalType": "bool",
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "spender",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "addedValue",
-                    "type": "uint256"
-                }
-            ],
-            "name": "increaseAllowance",
-            "outputs": [
-                {
-                    "internalType": "bool",
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "account",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "amount",
-                    "type": "uint256"
-                }
-            ],
-            "name": "mint",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
             "inputs": [],
-            "name": "name",
+            "name": "outcoming",
             "outputs": [
                 {
-                    "internalType": "string",
+                    "internalType": "contract ERC20",
                     "name": "",
-                    "type": "string"
+                    "type": "address"
                 }
             ],
             "stateMutability": "view",
@@ -272,19 +272,19 @@
         },
         {
             "inputs": [],
-            "name": "renounceOwnership",
+            "name": "pause",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
         },
         {
             "inputs": [],
-            "name": "symbol",
+            "name": "paused",
             "outputs": [
                 {
-                    "internalType": "string",
+                    "internalType": "bool",
                     "name": "",
-                    "type": "string"
+                    "type": "bool"
                 }
             ],
             "stateMutability": "view",
@@ -292,22 +292,42 @@
         },
         {
             "inputs": [],
-            "name": "totalSupply",
+            "name": "pauser",
             "outputs": [
                 {
-                    "internalType": "uint256",
+                    "internalType": "address",
                     "name": "",
-                    "type": "uint256"
+                    "type": "address"
                 }
             ],
             "stateMutability": "view",
             "type": "function"
         },
         {
+            "inputs": [],
+            "name": "recipient",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "renounceOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
             "inputs": [
                 {
                     "internalType": "address",
-                    "name": "recipient",
+                    "name": "_recipient",
                     "type": "address"
                 },
                 {
@@ -317,42 +337,7 @@
                 }
             ],
             "name": "transfer",
-            "outputs": [
-                {
-                    "internalType": "bool",
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "sender",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "recipient",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint256",
-                    "name": "amount",
-                    "type": "uint256"
-                }
-            ],
-            "name": "transferFrom",
-            "outputs": [
-                {
-                    "internalType": "bool",
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
+            "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
         },
@@ -365,6 +350,26 @@
                 }
             ],
             "name": "transferOwnership",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "uniswapRouter",
+            "outputs": [
+                {
+                    "internalType": "contract IUniswapV2Router02",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "unpause",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
