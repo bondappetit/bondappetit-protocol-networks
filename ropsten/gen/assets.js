@@ -1,15 +1,15 @@
 module.exports = {
-    "Bond": {
-        "address": "0x2E46586D9E940453df79A9C647bd1b7b01F05F14",
-        "name": "Bond",
-        "symbol": "BOND",
+    "Governance": {
+        "address": "0x9a05c4E8BD3E85bB58919493168Aa052832F8D9a",
+        "name": "BondAppetit Governance",
+        "symbol": "BAG",
         "decimals": 18,
         "investing": false
     },
-    "ABT": {
-        "address": "0xB7C478FF8ae43eaAEf84293E38ABFDbd27D52cBd",
-        "name": "ABT",
-        "symbol": "ABT",
+    "Stable": {
+        "address": "0x4cf45b5DF360E8dd57Aa09F67CcD1FcB0Eca5C1B",
+        "name": "Appetite USD",
+        "symbol": "USDp",
         "decimals": 18,
         "investing": false
     }
