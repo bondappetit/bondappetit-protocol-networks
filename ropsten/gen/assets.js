@@ -1,13 +1,13 @@
 module.exports = {
     "Governance": {
-        "address": "0x0286524F23Eea7Cbbc0F8DEb55e5b652e65D817a",
+        "address": "0xe0b0b2b9641d38A61857bF0194fE0a72E8F6961A",
         "name": "BondAppetit Governance",
         "symbol": "BAG",
         "decimals": 18,
         "investing": false
     },
     "Stable": {
-        "address": "0xD71C8272059aAD0eF42afe999AB27508ec21d951",
+        "address": "0x6C9eDe45edEeB98B5C48D7d5881Db4d837e763Ec",
         "name": "Appetite USD",
         "symbol": "USDap",
         "decimals": 18,
