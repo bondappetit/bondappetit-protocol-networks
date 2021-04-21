@@ -26,8 +26,8 @@ module.exports = {
     ],
   },
   UniswapV2Router02: {
-    address: "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
-    name: "UniswapV2Router02",
+    address: "0xd99d1c33f9fc3444f8101754abc46c52416550d1",
+    name: "PancakeRouter",
     voting: false,
     abi: [
       {
@@ -984,8 +984,8 @@ module.exports = {
     ],
   },
   UniswapV2Factory: {
-    address: "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f",
-    name: "UniswapV2Factory",
+    address: "0x6725f303b657a9451d8ba641348b6761a6cc7a17",
+    name: "PancakeFactory",
     voting: false,
     abi: [
       {
@@ -1104,157 +1104,8 @@ module.exports = {
       },
     ],
   },
-  IOneSplit: {
-    address: "0x712E990ffB170BFe8C0de8B4f25918589a80bAbE",
-    name: "IOneSplit",
-    voting: false,
-    abi: [
-      {
-        inputs: [
-          {
-            internalType: "contract IERC20",
-            name: "fromToken",
-            type: "address",
-          },
-          {
-            internalType: "contract IERC20",
-            name: "destToken",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "parts",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "flags",
-            type: "uint256",
-          },
-        ],
-        name: "getExpectedReturn",
-        outputs: [
-          {
-            internalType: "uint256",
-            name: "returnAmount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256[]",
-            name: "distribution",
-            type: "uint256[]",
-          },
-        ],
-        stateMutability: "view",
-        type: "function",
-      },
-      {
-        inputs: [
-          {
-            internalType: "contract IERC20",
-            name: "fromToken",
-            type: "address",
-          },
-          {
-            internalType: "contract IERC20",
-            name: "destToken",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "parts",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "flags",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "destTokenEthPriceTimesGasPrice",
-            type: "uint256",
-          },
-        ],
-        name: "getExpectedReturnWithGas",
-        outputs: [
-          {
-            internalType: "uint256",
-            name: "returnAmount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "estimateGasAmount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256[]",
-            name: "distribution",
-            type: "uint256[]",
-          },
-        ],
-        stateMutability: "view",
-        type: "function",
-      },
-      {
-        inputs: [
-          {
-            internalType: "contract IERC20",
-            name: "fromToken",
-            type: "address",
-          },
-          {
-            internalType: "contract IERC20",
-            name: "destToken",
-            type: "address",
-          },
-          {
-            internalType: "uint256",
-            name: "amount",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256",
-            name: "minReturn",
-            type: "uint256",
-          },
-          {
-            internalType: "uint256[]",
-            name: "distribution",
-            type: "uint256[]",
-          },
-          {
-            internalType: "uint256",
-            name: "flags",
-            type: "uint256",
-          },
-        ],
-        name: "swap",
-        outputs: [
-          {
-            internalType: "uint256",
-            name: "returnAmount",
-            type: "uint256",
-          },
-        ],
-        stateMutability: "payable",
-        type: "function",
-      },
-    ],
-  },
   UsdtUsdPriceFeed: {
-    address: "0xe9146e9d8e3362023647d4e811dc79e0efd553c0",
+    address: "0xeca2605f0bcf2ba5966372c99837b1f182d3d620",
     name: "UsdtUsdPriceFeed",
     voting: false,
     abi: [
@@ -1421,7 +1272,7 @@ module.exports = {
     ],
   },
   UsdcUsdPriceFeed: {
-    address: "0xfda14021529f108fac0928df1654b5f56117f30f",
+    address: "0x90c069c4538adac136e051052e14c1cd799c41b7",
     name: "UsdcUsdPriceFeed",
     voting: false,
     abi: [
@@ -1587,9 +1438,176 @@ module.exports = {
       },
     ],
   },
-  DaiUsdPriceFeed: {
-    address: "0x874c390df418589c9c8df6c05e7f7c245a04345f",
-    name: "DaiUsdPriceFeed",
+  DaiBnbPriceFeed: {
+    address: "0x0630521ac362bc7a19a4ee44b57ce72ea34ad01c",
+    name: "DaiBnbPriceFeed",
+    voting: false,
+    abi: [
+      {
+        inputs: [
+          {
+            internalType: "uint8",
+            name: "_decimals",
+            type: "uint8",
+          },
+          {
+            internalType: "uint256",
+            name: "_version",
+            type: "uint256",
+          },
+        ],
+        stateMutability: "nonpayable",
+        type: "constructor",
+      },
+      {
+        inputs: [
+          {
+            internalType: "uint80",
+            name: "roundId",
+            type: "uint80",
+          },
+          {
+            internalType: "int256",
+            name: "answer",
+            type: "int256",
+          },
+          {
+            internalType: "uint256",
+            name: "startedAt",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "updatedAt",
+            type: "uint256",
+          },
+          {
+            internalType: "uint80",
+            name: "answeredInRound",
+            type: "uint80",
+          },
+        ],
+        name: "addRound",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+      },
+      {
+        inputs: [],
+        name: "decimals",
+        outputs: [
+          {
+            internalType: "uint8",
+            name: "",
+            type: "uint8",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+      {
+        inputs: [
+          {
+            internalType: "uint80",
+            name: "_roundId",
+            type: "uint80",
+          },
+        ],
+        name: "getRoundData",
+        outputs: [
+          {
+            internalType: "uint80",
+            name: "roundId",
+            type: "uint80",
+          },
+          {
+            internalType: "int256",
+            name: "answer",
+            type: "int256",
+          },
+          {
+            internalType: "uint256",
+            name: "startedAt",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "updatedAt",
+            type: "uint256",
+          },
+          {
+            internalType: "uint80",
+            name: "answeredInRound",
+            type: "uint80",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+      {
+        inputs: [],
+        name: "latestRoundData",
+        outputs: [
+          {
+            internalType: "uint80",
+            name: "roundId",
+            type: "uint80",
+          },
+          {
+            internalType: "int256",
+            name: "answer",
+            type: "int256",
+          },
+          {
+            internalType: "uint256",
+            name: "startedAt",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "updatedAt",
+            type: "uint256",
+          },
+          {
+            internalType: "uint80",
+            name: "answeredInRound",
+            type: "uint80",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+      {
+        inputs: [],
+        name: "latestRoundId",
+        outputs: [
+          {
+            internalType: "uint80",
+            name: "",
+            type: "uint80",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+      {
+        inputs: [],
+        name: "version",
+        outputs: [
+          {
+            internalType: "uint256",
+            name: "",
+            type: "uint256",
+          },
+        ],
+        stateMutability: "view",
+        type: "function",
+      },
+    ],
+  },
+  BnbUsdPriceFeed: {
+    address: "0x2514895c72f50d8bd4b4f9b1110f0d6bd2c97526",
+    name: "BnbUsdPriceFeed",
     voting: false,
     abi: [
       {
@@ -1755,7 +1773,7 @@ module.exports = {
     ],
   },
   BtcUsdPriceFeed: {
-    address: "0x6923e4c27db7e92dd1aaa28f3a82f9b4a81a891b",
+    address: "0x5741306c21795fdcbb9b265ea0255f499dfe515c",
     name: "BtcUsdPriceFeed",
     voting: false,
     abi: [
@@ -1922,7 +1940,7 @@ module.exports = {
     ],
   },
   EthUsdPriceFeed: {
-    address: "0xad5c27a03c4c6d48821ac8f634639ccf4df1718c",
+    address: "0x143db3ceefbdfe5631add3e50f7614b6ba708ba7",
     name: "EthUsdPriceFeed",
     voting: false,
     abi: [
