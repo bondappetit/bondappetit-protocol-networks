@@ -1,10 +1,10 @@
 module.exports = {
-  networkName: 'mainnetBSC',
-  networkUrl: 'https://bsc-dataseed.binance.org',
-  networkEtherscan: 'http://bscscan.com',
-  networkId: 56,
-  gasPrice: '5000000000',
-  averageBlockTime: '3',
+  networkName: 'goerli',
+  networkUrl: 'https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+  networkEtherscan: 'https://goerli.etherscan.io',
+  networkId: 5,
+  gasPrice: '2000000000',
+  averageBlockTime: '13.2',
   accounts: {
     ...require("./accounts"),
   },

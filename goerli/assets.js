@@ -14,7 +14,7 @@ module.exports = {
     investing: true,
   },
   USDC: {
-    address: "0x0D9C8723B343A8368BebE0B5E89273fF8D712e3C",
+    address: "0x07865c6E87B9F70255377e024ace6630C1Eaa37F",
     name: "USD Coin",
     symbol: "USDC",
     decimals: 6,
