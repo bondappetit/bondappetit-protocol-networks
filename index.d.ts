@@ -39,6 +39,7 @@ declare const _exports: {
   development: Network;
   goerli: Network;
   main: Network;
+  mainBSC: Network;
 };
 
 export = _exports;
