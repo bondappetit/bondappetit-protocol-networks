@@ -1,6 +1,6 @@
 {
   "name": "@bondappetit/networks",
-  "version": "2.0.22",
+  "version": "2.0.23",
   "main": "./networks/index.js",
   "scripts": {},
   "author": "",
